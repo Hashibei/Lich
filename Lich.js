@@ -1,7 +1,25 @@
-/*=====================================================*/
-/*===================   POLYFILLS   ===================*/
-/*=====================================================*/
+/*!
+ * Lich v1.0.0 (https://github.com/Hashibei/Lich)
+ * Copyright 2017, Hashibei, All rights reserved.
+ * Licensed under the MIT license
+ */
 
+//=====================================================//
+//===================   POLYFILLS   ===================//
+//=====================================================//
+
+/**
+ * @external Function
+ * @description The Default javascript Function class.
+ * @since 1.0.0
+ * @see {@link https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Function|Function}
+ */
+
+/**
+ * @function external:Function#extends
+ * @description Provides Lich.js the extend capability.
+ * @param {number} Super The super Class.
+ */
 Function.prototype.extends = function(Super)
 {
     
@@ -11,6 +29,12 @@ Function.prototype.extends = function(Super)
         
 }
 
+/**
+ * @function external:Function#abstract
+ * @description Defines in Lich.js the abstract classes.
+ * @throws {Error} Can't instantiate abstract class !
+ * @param {object} Abstract The function that will be abstract, and cant be instantiated.
+ */
 Function.prototype.abstract = function(Abstract)
 {    
     
@@ -23,32 +47,49 @@ Function.prototype.abstract = function(Abstract)
     
 }
 
-/*=====================================================*/
-/*===================   NAMESPACE   ==================*/
-/*=====================================================*/
+//=====================================================//
+//===================   NAMESPACE   ===================//
+//=====================================================//
 
+/**
+ * @description Lich is the global namespace that contains all of the library class and methods.
+ * @namespace Lich
+*/
 this.Lich = this.Lich || {};
 
-/*=====================================================*/
-/*====================   AUTOSTART   ==================*/
-/*=====================================================*/
+//=====================================================//
+//====================   AUTOSTART   ==================//
+//=====================================================//
 
 (function()
 {
     "use strict";
     
-    /*=====================================================*/
-    /*=======================   SCOPE   ===================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=======================   SCOPE   ===================//
+    //=====================================================//
     
+    /**
+     * @description Store all the instances of the Lich library in a clean place to write code without interrupting the window itself.
+     * @memberof Lich
+    */
     Lich.Scope = {};
     
-    /*=====================================================*/
-    /*=====================   DOCUMENT   ==================*/
-    /*=====================================================*/
-          
+    //=====================================================//
+    //=====================   DOCUMENT   ==================//
+    //=====================================================//
+    
+    /**
+     * @description Contains all Document methods.
+     * @namespace Lich.Document
+    */
     Lich.Document = {};
         
+    /**
+     * @description Waits the content load to successfully fire a callback function.
+     * @param {function} fn - A callback function to fire wen the loader is complete.
+     * @method
+    */
     Lich.Document.onLoad = function(fn)
     {
                 
@@ -63,6 +104,11 @@ this.Lich = this.Lich || {};
 
     };
     
+    /**
+     * @description Add a child to de body element.
+     * @param {object} child - The element that will be inserted.
+     * @method
+    */
     Lich.Document.addChild = function(child)
     {
     
@@ -70,13 +116,35 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Remove a DOM element from the body.
+     * @param {object} child - The DOM element that will be removed.
+     * @method
+    */
+    Lich.Document.removeChild = function(child)
+	{
+
+		this.body.removeChild(child.getElement());
+
+	};
+    
+    /**
+     * @description Create a DOM element.
+     * @param {object} node - The DOM element that will be created.
+     * @method
+    */
     Lich.Document.createElement = function(node)
     {
             
         return this.document.createElement(node);
         
     };
-    
+
+    /**
+     * @description Change the document title.
+     * @param {string} title - The new title for the document.
+     * @method
+    */
     Lich.Document.setTitle = function(title)
     {
     
@@ -84,6 +152,11 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Change the html document page title.
+     * @param {string} title - The title of tha html page.
+     * @method
+    */
     Lich.Document.getAnchors = function()
     {
     
@@ -91,13 +164,10 @@ this.Lich = this.Lich || {};
     
     };
     
-    Lich.Document.getAnchors = function()
-    {
-    
-        return this.document.anchors;
-    
-    };
-    
+    /**
+     * @description Get the base URI from the document.
+     * @method
+    */
     Lich.Document.getBaseURI = function()
     {
     
@@ -105,6 +175,10 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Get the document body.
+     * @method
+    */
     Lich.Document.getBody = function()
     {
     
@@ -112,6 +186,10 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Get the document doctype.
+     * @method
+    */
     Lich.Document.getDoctype = function()
     {
     
@@ -119,13 +197,21 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Get the document element.
+     * @method
+    */
     Lich.Document.getDocumentElement = function()
     {
     
         return this.document.documentElement;
         
     };
-        
+    
+    /**
+     * @description Get the document URI.
+     * @method
+    */
     Lich.Document.getDocumentURI = function()
     {
         
@@ -133,6 +219,10 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Get the document domain.
+     * @method
+    */
     Lich.Document.getDomain = function()
     {
     
@@ -140,6 +230,10 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Get the document embeds.
+     * @method
+    */
     Lich.Document.getEmbeds = function()
     {
     
@@ -147,6 +241,10 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Get the document head.
+     * @method
+    */
     Lich.Document.getHead = function()
     {
     
@@ -154,6 +252,10 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Get the document forms.
+     * @method
+    */
     Lich.Document.getForms = function()
     {
     
@@ -161,6 +263,10 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Get the document images.
+     * @method
+    */
     Lich.Document.getImages = function()
     {
     
@@ -168,6 +274,10 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Get the document enconding.
+     * @method
+    */
     Lich.Document.getInputEncoding = function()
     {
         
@@ -175,6 +285,10 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Get the document last modified date.
+     * @method
+    */
     Lich.Document.getLasModfied = function()
     {
     
@@ -182,6 +296,10 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Get the document links.
+     * @method
+    */
     Lich.Document.getLinks = function()
     {
       
@@ -189,6 +307,10 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Get the document ready state.
+     * @method
+    */
     Lich.Document.getReadyState = function()
     {
     
@@ -196,6 +318,10 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Get the document referrer.
+     * @method
+    */
     Lich.Document.getReferrer = function()
     {
     
@@ -203,6 +329,10 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Get the document scripts.
+     * @method
+    */
     Lich.Document.getScripts = function()
     {
     
@@ -210,6 +340,10 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Get the document tile.
+     * @method
+    */
     Lich.Document.getTitle = function()
     {
     
@@ -217,6 +351,10 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Get the document URL.
+     * @method
+    */
     Lich.Document.getURL = function()
     {
         
@@ -224,53 +362,67 @@ this.Lich = this.Lich || {};
     
     };
     
-    Lich.Document.getTitle = function()
-    {
+    //=====================================================//
+    //========================   TIME  ====================//
+    //=====================================================//
     
-        return this.document.title;
-    
-    };
-    
-    /*=====================================================*/
-    /*========================   TIME  ====================*/
-    /*=====================================================*/
-    
+    /**
+     * @description Contains all Time methods.
+     * @namespace Lich.Time
+    */
     Lich.Time = {};
     
-    Lich.Time.timeoutList = [];
+    Lich.Time._timeoutList = [];
     
-    Lich.Time.intervalList = [];
+    Lich.Time._intervalList = [];
         
+    /**
+     * @description Create a timeout thar fires a event at the end of its countdown.
+     * @param {string} name - The timeout name.
+     * @param {function} fn - The callback function.
+     * @param {number} miliseconds - The timeout time.
+    */
     Lich.Time.setTimeout = function(name,fn,milliseconds)
     {
-    
+
         var timeout = setTimeout(fn,milliseconds);
         
-        Lich.Time.timeoutList.push({name:name,timeout:timeout});
+        Lich.Time._timeoutList.push({name:name,timeout:timeout});
     
     };
     
+    /**
+     * @description Create a interval that fires a event at the end of its iteration.
+     * @param {string} name - The interval name.
+     * @param {function} fn - The callback function.
+     * @param {number} miliseconds - The interval time.
+    */
     Lich.Time.setInterval = function(name,fn,milliseconds)
     {
     
         var interval = setInterval(fn,milliseconds);
         
-        Lich.Time.intervalList.push({name:name,interval:interval});
+        Lich.Time._intervalList.push({name:name,interval:interval});
     
     };
     
+    /**
+     * @description Remove a timeout countdown.
+     * @param {string} name - The timeout name to clear.
+     * @param {function} fn - The callback function.
+    */
     Lich.Time.clearTimeout = function(name,fn)
     {
     
-        for(var i = 0; i < Lich.Time.timeoutList.length; i++)
+        for(var i = 0; i < Lich.Time._timeoutList.length; i++)
         {
             
-            if(Lich.Time.timeoutList[i].name == name)
+            if(Lich.Time._timeoutList[i].name == name)
             {
             
-                clearTimeout(Lich.Time.timeoutList[i].timeout);
+                clearTimeout(Lich.Time._timeoutList[i].timeout);
                 
-                Lich.Time.timeoutList.splice(i,1);
+                Lich.Time._timeoutList.splice(i,1);
                 
                 fn();
                 
@@ -282,19 +434,24 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Remove a interval countdown.
+     * @param {string} name - The interval name to clear.
+     * @param {function} fn - The callback function.
+    */
     Lich.Time.clearInterval = function(name,fn)
     {
     
-        for(var i = 0; i < Lich.Time.intervalList.length; i++)
+        for(var i = 0; i < Lich.Time._intervalList.length; i++)
         {
             
-            if(Lich.Time.intervalList[i].name == name)
+            if(Lich.Time._intervalList[i].name == name)
             {
             
-                clearInterval(Lich.Time.intervalList[i].interval);
+                clearInterval(Lich.Time._intervalList[i].interval);
                 
                 
-                Lich.Time.intervalList.splice(i,1);
+                Lich.Time._intervalList.splice(i,1);
                 
                 fn();
                 
@@ -306,12 +463,21 @@ this.Lich = this.Lich || {};
     
     };
     
-    /*=====================================================*/
-    /*=======================   JSON   ====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=======================   JSON   ====================//
+    //=====================================================//
     
+    /**
+     * @description Contains all JSON methods.
+     * @namespace Lich.JSON
+    */
     Lich.JSON = {};
     
+    /**
+     * @description Get a JSON response text and call a function.
+     * @param {string} url - The json url path.
+     * @param {function} fn - The callback function.
+    */
     Lich.JSON.get = function(url,fn)
     {
                 
@@ -330,20 +496,34 @@ this.Lich = this.Lich || {};
         
     };
     
-    /*=====================================================*/
-    /*==============   BROWSER OBJECT MODEL   =============*/
-    /*=====================================================*/
+    //=====================================================//
+    //==============   BROWSER OBJECT MODEL   =============//
+    //=====================================================//
     
+    /**
+     * @description Contains all BOM methods and namespaces.
+     * @namespace Lich.BOM
+    */
     Lich.BOM = {};
+    
     Lich.BOM.Document = Lich.Document;
+    
     Lich.BOM.Time = Lich.Time;
     
-    /*=====================================================*/
-    /*=====================   BROWSER   ===================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=====================   BROWSER   ===================//
+    //=====================================================//
     
+    /**
+     * @description Get the document URL.
+     * @method
+    */
     Lich.BOM.Browser = {};
     
+    /**
+     * @description Get the browser document.
+     * @method
+    */
     Lich.BOM.Browser.getDocument = function()
     {
     
@@ -351,6 +531,10 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Get the browser window.
+     * @method
+    */
     Lich.BOM.Browser.getWindow = function()
     {
     
@@ -358,13 +542,21 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Get the browser screen.
+     * @method
+    */
     Lich.BOM.Browser.getScreen = function()
     {
     
-        return window;
+        return screen;
     
     };
     
+    /**
+     * @description Get the browser location.
+     * @method
+    */
     Lich.BOM.Browser.getLocation = function()
     {
     
@@ -372,6 +564,10 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Get the browser history.
+     * @method
+    */
     Lich.BOM.Browser.getHistory = function()
     {
     
@@ -379,6 +575,10 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Get the browser navigator.
+     * @method
+    */
     Lich.BOM.Browser.getNavigator = function()
     {
         
@@ -386,12 +586,20 @@ this.Lich = this.Lich || {};
     
     };
     
-    /*=====================================================*/
-    /*======================   WINDOW   ===================*/
-    /*=====================================================*/
+    //=====================================================//
+    //======================   WINDOW   ===================//
+    //=====================================================//
     
+    /**
+     * @description Contains all Window methods.
+     * @namespace Lich.BOM.Window
+    */
     Lich.BOM.Window = {};
     
+    /**
+     * @description Get the window width.
+     * @method
+    */
     Lich.BOM.Window.getWidth = function()
     {
       
@@ -399,6 +607,10 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Get the window height.
+     * @method
+    */
     Lich.BOM.Window.getHeight = function()
     {
       
@@ -406,12 +618,20 @@ this.Lich = this.Lich || {};
         
     };
     
-    /*=====================================================*/
-    /*======================   SCREEN   ===================*/
-    /*=====================================================*/
+    //=====================================================//
+    //======================   SCREEN   ===================//
+    //=====================================================//
     
+    /**
+     * @description Contains all Screen methods.
+     * @namespace Lich.BOM.Screen
+    */
     Lich.BOM.Screen = {};
     
+    /**
+     * @description Get the screen width.
+     * @method
+    */
     Lich.BOM.Screen.getWidth = function()
     {
       
@@ -419,6 +639,10 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Get the screen height.
+     * @method
+    */
     Lich.BOM.Screen.getHeight = function()
     {
       
@@ -426,6 +650,10 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Get the available screen width.
+     * @method
+    */
     Lich.BOM.Screen.getAvailableWidth = function()
     {
       
@@ -433,6 +661,10 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Get the available screen height.
+     * @method
+    */
     Lich.BOM.Screen.getAvailableHeight = function()
     {
       
@@ -440,6 +672,10 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Get the screen color depth.
+     * @method
+    */
     Lich.BOM.Screen.getColorDepth = function()
     {
     
@@ -447,6 +683,10 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Get the screen pixel depth.
+     * @method
+    */
     Lich.BOM.Screen.getPixelDepth = function()
     {
     
@@ -454,12 +694,20 @@ this.Lich = this.Lich || {};
     
     };
     
-    /*=====================================================*/
-    /*======================   LOCATION   =================*/
-    /*=====================================================*/
+    //=====================================================//
+    //======================   LOCATION   =================//
+    //=====================================================//
     
+    /**
+     * @description Contains all Location methods.
+     * @namespace Lich.BOM.Screen
+    */
     Lich.BOM.Location = {};
     
+    /**
+     * @description Get the location hyper text reference.
+     * @method
+    */
     Lich.BOM.Location.getHypertextReference = function()
     {
     
@@ -467,6 +715,10 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Get the location host name.
+     * @method
+    */
     Lich.BOM.Location.getHostname = function()
     {
     
@@ -474,6 +726,10 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Get the location path name.
+     * @method
+    */
     Lich.BOM.Location.getPathname = function()
     {
     
@@ -481,6 +737,10 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Get the location protocol.
+     * @method
+    */
     Lich.BOM.Location.getProtocol = function()
     {
     
@@ -488,6 +748,10 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Get the location port.
+     * @method
+    */
     Lich.BOM.Location.getPort = function()
     {
     
@@ -495,6 +759,11 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Assign a location url.
+     * @param {string} assing - The url for the location.
+     * @method
+    */
     Lich.BOM.Location.assign = function(url)
     {
     
@@ -502,12 +771,20 @@ this.Lich = this.Lich || {};
     
     };
         
-    /*=====================================================*/
-    /*======================   HISTORY   ==================*/
-    /*=====================================================*/
+    //=====================================================//
+    //======================   HISTORY   ==================//
+    //=====================================================//
     
+    /**
+     * @description Contains all History methods.
+     * @namespace Lich.BOM.History
+    */
     Lich.BOM.History = {};
     
+    /**
+     * @description Return in the history.
+     * @method
+    */
     Lich.BOM.History.back = function()
     {
     
@@ -515,6 +792,10 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Foward in the history.
+     * @method
+    */
     Lich.BOM.History.foward = function()
     {
     
@@ -522,12 +803,20 @@ this.Lich = this.Lich || {};
     
     };
     
-    /*=====================================================*/
-    /*=====================   NAVIGATOR  ==================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=====================   NAVIGATOR  ==================//
+    //=====================================================//
     
+    /**
+     * @description Contains all Navigator methods.
+     * @namespace Lich.BOM.Navigator
+    */
     Lich.BOM.Navigator = {};
-        
+    
+    /**
+     * @description Get Navigador application name.
+     * @method
+    */
     Lich.BOM.Navigator.getApplicationName = function()
     {
     
@@ -535,6 +824,10 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Get Navigador application code name.
+     * @method
+    */
     Lich.BOM.Navigator.getApplicationCodeName = function()
     {
     
@@ -542,6 +835,10 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Get Navigador application version.
+     * @method
+    */
     Lich.BOM.Navigator.getApplicationVersion = function()
     {
     
@@ -549,6 +846,10 @@ this.Lich = this.Lich || {};
     
     }
     
+    /**
+     * @description Get Navigador engine.
+     * @method
+    */
     Lich.BOM.Navigator.getEngine = function()
     {
     
@@ -556,6 +857,10 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Get Navigador agent.
+     * @method
+    */
     Lich.BOM.Navigator.getAgent = function()
     {
     
@@ -563,6 +868,10 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Get Navigador platform.
+     * @method
+    */
     Lich.BOM.Navigator.getPlataform = function()
     {
     
@@ -570,6 +879,10 @@ this.Lich = this.Lich || {};
 
     };
     
+    /**
+     * @description Get Navigador language.
+     * @method
+    */
     Lich.BOM.Navigator.getLanguage = function()
     {
     
@@ -577,6 +890,10 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Get Navigador online state.
+     * @method
+    */
     Lich.BOM.Navigator.isOnline = function()
     {
     
@@ -584,6 +901,10 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Get Navigador java enable state.
+     * @method
+    */
     Lich.BOM.Navigator.isJavaEnabled = function()
     {
     
@@ -591,6 +912,10 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Get Navigador cookie enable state.
+     * @method
+    */
     Lich.BOM.Navigator.isCookiesEnabled = function()
     {
     
@@ -598,12 +923,20 @@ this.Lich = this.Lich || {};
         
     };
     
-    /*=====================================================*/
-    /*=======================   POPUP  ====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=======================   POPUP  ====================//
+    //=====================================================//
     
+    /**
+     * @description Contains all Popup methods.
+     * @namespace Lich.BOM.Popup
+    */
     Lich.BOM.Popup = {};
     
+    /**
+     * @description Call a Popup alert.
+     * @method
+    */
     Lich.BOM.Popup.alert = function(message)
     {
     
@@ -611,6 +944,10 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Call a Popup alert.
+     * @method
+    */
     Lich.BOM.Popup.confirm = function(message)
     {
     
@@ -618,6 +955,10 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Call a Popup prompt.
+     * @method
+    */
     Lich.BOM.Popup.prompt = function(message,defaultMessage)
     {
     
@@ -625,12 +966,22 @@ this.Lich = this.Lich || {};
     
     };
     
-    /*=====================================================*/
-    /*=======================   COOKIE  ===================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=======================   COOKIE  ===================//
+    //=====================================================//
     
+    /**
+     * @description Contains all Cookie methods.
+     * @namespace Lich.BOM.Cookie
+    */
     Lich.BOM.Cookie = {};
     
+    /**
+     * @description Create a cookie.
+     * @param {string} name - The cookie name.
+     * @param {string} value - The cookie value.
+     * @method
+    */
     Lich.BOM.Cookie.createCookie = function(name,value)
     {
             
@@ -638,6 +989,11 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Delete a cookie.
+     * @param {string} name - The cookie name.
+     * @method
+    */
     Lich.BOM.Cookie.deleteCookie = function(name)
     {
     
@@ -645,6 +1001,11 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Get all the cookies.
+     * @param {string} name - The cookie name.
+     * @method
+    */
     Lich.BOM.Cookie.getAllCookies = function()
     {
             
@@ -671,6 +1032,11 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Get a cookie.
+     * @param {string} name - The cookie name.
+     * @method
+    */
     Lich.BOM.Cookie.getCookie = function(name)
     {
             
@@ -690,24 +1056,38 @@ this.Lich = this.Lich || {};
     
     };
     
-    /*-----------------------------------------------------*/
+    //-----------------------------------------------------//
     
     Lich.Document.getCookies = Lich.BOM.Cookie.getAllCookies;
     
-    /*-----------------------------------------------------*/
+    //-----------------------------------------------------//
     
-    /*=====================================================*/
-    /*=============   DOCUMENT OBJECT MODEL   =============*/
-    /*=====================================================*/
+    //=====================================================//
+    //=============   DOCUMENT OBJECT MODEL   =============//
+    //=====================================================//
     
+    /**
+     * @description Contains all DOM methods and classes.
+     * @namespace Lich.DOM
+    */
     Lich.DOM = {};
+    
+    /**
+     * Utils for Document Object Model manager.
+     * @namespace Lich.DOM.Utils
+    */
     Lich.DOM.Utils = {};
         
     
-    /*=====================================================*/
-    /*====================   ELEMENT   ====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //====================   ELEMENT   ====================//
+    //=====================================================//
     
+    /**
+     * @description Utility for every DOM element.
+     * @class Lich.DOM.Utils.Element
+     * @abstract
+    */
     Lich.DOM.Utils.Element = function()
     {
         
@@ -718,6 +1098,11 @@ this.Lich = this.Lich || {};
                
     };
     
+    /**
+     * @description Set the element id.
+     * @param {string} id - The element id.
+     * @method
+    */
     Lich.DOM.Utils.Element.prototype.setId = function(id)
     {
         
@@ -726,6 +1111,12 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Set a element attribute.
+     * @param {string} attribute - The attribute to change or set.
+     * @param {string} value - The value for the attribute.
+     * @method
+    */
     Lich.DOM.Utils.Element.prototype.setAttribute = function(attribute,value)
     {
     
@@ -733,13 +1124,23 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Set a element property.
+     * @param {string} property - The property to change or set.
+     * @param {string} value - The value for the attribute.
+     * @method
+    */
     Lich.DOM.Utils.Element.prototype.setProperty = function(property,value)
     {
     
-        this._element.style[propery] = value;
+        this._element.style[property] = value;
     
     };
     
+    /**
+     * @description Get the element id.
+     * @method
+    */
     Lich.DOM.Utils.Element.prototype.getId = function()
     {
     
@@ -747,13 +1148,21 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Get the element node.
+     * @method
+    */
     Lich.DOM.Utils.Element.prototype.getNode = function()
     {
     
         return this._node;
         
     };
-        
+    
+    /**
+     * @description Get the element.
+     * @method
+    */
     Lich.DOM.Utils.Element.prototype.getElement = function()
     {
     
@@ -761,6 +1170,11 @@ this.Lich = this.Lich || {};
     
     }
 
+    /**
+     * @description Add a element class.
+     * @param {string} Class - The css class to set.
+     * @method
+    */
     Lich.DOM.Utils.Element.prototype.addClass = function(Class)
     {
         
@@ -768,13 +1182,24 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Add a element class.
+     * @param {string} Class - The css class to set.
+     * @method
+    */
     Lich.DOM.Utils.Element.prototype.removeClass = function(Class)
     {
                 
         this._element.classList.remove(Class.trim());
         
     };
-            
+    
+    /**
+     * @description Set a event, to be played after a DOM interaction.
+     * @param {string} event - The name of the event.
+     * @param {function} fn - The function to be called.
+     * @method
+    */
     Lich.DOM.Utils.Element.prototype.onEvent = function(event,fn)
     {        
         this._event = {};
@@ -784,6 +1209,12 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Set a event, to be played after a DOM interaction.
+     * @param {string} event - The name of the event.
+     * @param {function} fn - The function to be called.
+     * @method
+    */
     Lich.DOM.Utils.Element.prototype.animate = function(property,options,fn)
     {
         
@@ -792,10 +1223,15 @@ this.Lich = this.Lich || {};
         
     };
     
-    /*=====================================================*/
-    /*=====================  CONTAINER  ===================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=====================  CONTAINER  ===================//
+    //=====================================================//
     
+    /**
+     * @description Utility for every DOM Container element.
+     * @class Lich.DOM.Utils.Container
+     * @abstract
+    */
     Lich.DOM.Utils.Container = function()
     {                
         
@@ -807,7 +1243,12 @@ this.Lich = this.Lich || {};
     }
     
     Lich.DOM.Utils.Container.extends(Lich.DOM.Utils.Element);
-            
+    
+    /**
+     * @description Add a child element.
+     * @param {object} child - The child element.
+     * @method
+    */      
     Lich.DOM.Utils.Container.prototype.addChild = function(child)
     {
         
@@ -816,6 +1257,46 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Add a child element first.
+     * @param {object} child - The child element.
+     * @method
+    */
+    Lich.DOM.Utils.Container.prototype.addChildFirst = function(child)
+    {
+    
+        this._element.insertBefore(child._element,this._childs[0]._element);
+        
+    };
+    
+    /**
+     * @description Remove a child element.
+     * @param {object} child - The child element.
+     * @method
+    */
+    Lich.DOM.Utils.Container.prototype.removeChild = function(child)
+	{
+
+		this._element.removeChild(child._element);
+		
+		var vetor = this._childs.length;
+		for(let i = 0; i < vetor; i++)
+		{
+		
+			if(this._childs[i] == child)
+			{
+			
+				this._childs.push(i,1);
+			}
+		
+		}
+		
+	};
+    
+    /**
+     * @description Get a child element.
+     * @method
+    */
     Lich.DOM.Utils.Container.prototype.getChild = function(number)
     {
     
@@ -824,6 +1305,10 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Get all child elements.
+     * @method
+    */
     Lich.DOM.Utils.Container.prototype.getAllChilds = function()
     {
     
@@ -831,10 +1316,15 @@ this.Lich = this.Lich || {};
         
     };
     
-    /*=====================================================*/
-    /*========================  TEXT  =====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //========================  TEXT  =====================//
+    //=====================================================//
     
+    /**
+     * @description Utility for every DOM Text element.
+     * @class Lich.DOM.Utils.Text
+     * @abstract
+    */
     Lich.DOM.Utils.Text = function()
     {                
         
@@ -846,7 +1336,12 @@ this.Lich = this.Lich || {};
     }
     
     Lich.DOM.Utils.Text.extends(Lich.DOM.Utils.Element);
-        
+    
+    /**
+     * @description Set a text string.
+     * @param {string} text - The text string.
+     * @method
+    */
     Lich.DOM.Utils.Text.prototype.setText = function(text)
     {
     
@@ -855,6 +1350,10 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Get the text string.
+     * @method
+    */
     Lich.DOM.Utils.Text.prototype.getText = function()
     {
     
@@ -862,10 +1361,14 @@ this.Lich = this.Lich || {};
         
     };
 
-    /*=====================================================*/
-    /*=====================  PARAGRAPH  ===================*/
-    /*=====================================================*/
-        
+    //=====================================================//
+    //=====================  PARAGRAPH  ===================//
+    //=====================================================//
+    
+    /**
+     * @description Create a Paragraph element.
+     * @class Lich.DOM.Paragraph
+    */ 
     Lich.DOM.Paragraph = function()
     {                
         
@@ -873,16 +1376,19 @@ this.Lich = this.Lich || {};
                 
         this._node = "p";
         this._element = Lich.Document.createElement(this._node);
-        
-                        
+                      
     }
     
     Lich.DOM.Paragraph.extends(Lich.DOM.Utils.Text);
         
-    /*=====================================================*/
-    /*=====================  HEADING 1  ===================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=====================  HEADING 1  ===================//
+    //=====================================================//
     
+    /**
+     * @description Create a Heading1 element.
+     * @class Lich.DOM.Heading1
+    */
     Lich.DOM.Heading1 = function()
     {                
         
@@ -890,16 +1396,19 @@ this.Lich = this.Lich || {};
                 
         this._node = "h1";
         this._element = Lich.Document.createElement(this._node);
-        
-                        
+                         
     }
     
     Lich.DOM.Heading1.extends(Lich.DOM.Utils.Text);
         
-    /*=====================================================*/
-    /*=====================  HEADING 2  ===================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=====================  HEADING 2  ===================//
+    //=====================================================//
     
+    /**
+     * @description Create a Heading2 element.
+     * @class Lich.DOM.Heading2
+    */
     Lich.DOM.Heading2 = function()
     {                
         
@@ -908,15 +1417,18 @@ this.Lich = this.Lich || {};
         this._node = "h2";
         this._element = Lich.Document.createElement(this._node);
         
-                        
     }
     
     Lich.DOM.Heading2.extends(Lich.DOM.Utils.Text);
         
-    /*=====================================================*/
-    /*=====================  HEADING 3  ===================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=====================  HEADING 3  ===================//
+    //=====================================================//
     
+    /**
+     * @description Create a Heading3 element.
+     * @class Lich.DOM.Heading3
+    */
     Lich.DOM.Heading3 = function()
     {                
         
@@ -925,15 +1437,18 @@ this.Lich = this.Lich || {};
         this._node = "h3";
         this._element = Lich.Document.createElement(this._node);
         
-                        
     }
     
     Lich.DOM.Heading3.extends(Lich.DOM.Utils.Text);   
     
-    /*=====================================================*/
-    /*=====================  HEADING 4  ===================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=====================  HEADING 4  ===================//
+    //=====================================================//
     
+    /**
+     * @description Create a Heading4 element.
+     * @class Lich.DOM.Heading4
+    */
     Lich.DOM.Heading4 = function()
     {                
         
@@ -942,15 +1457,18 @@ this.Lich = this.Lich || {};
         this._node = "h4";
         this._element = Lich.Document.createElement(this._node);
         
-                        
     }
     
     Lich.DOM.Heading4.extends(Lich.DOM.Utils.Text);  
     
-    /*=====================================================*/
-    /*=====================  HEADING 5  ===================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=====================  HEADING 5  ===================//
+    //=====================================================//
     
+    /**
+     * @description Create a Heading5 element.
+     * @class Lich.DOM.Heading5
+    */
     Lich.DOM.Heading5 = function()
     {                
         
@@ -959,15 +1477,18 @@ this.Lich = this.Lich || {};
         this._node = "h5";
         this._element = Lich.Document.createElement(this._node);
         
-                        
     }
     
     Lich.DOM.Heading5.extends(Lich.DOM.Utils.Text);
     
-    /*=====================================================*/
-    /*=====================  HEADING 6  ===================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=====================  HEADING 6  ===================//
+    //=====================================================//
     
+    /**
+     * @description Create a Heading6 element.
+     * @class Lich.DOM.Heading6
+    */
     Lich.DOM.Heading6 = function()
     {                
         
@@ -975,16 +1496,19 @@ this.Lich = this.Lich || {};
                 
         this._node = "h6";
         this._element = Lich.Document.createElement(this._node);
-        
                         
     }
     
     Lich.DOM.Heading6.extends(Lich.DOM.Utils.Text);
     
-    /*=====================================================*/
-    /*=====================  LINE BREAK  ==================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=====================  LINE BREAK  ==================//
+    //=====================================================//
     
+    /**
+     * @description Create a LineBreak element.
+     * @class Lich.DOM.LineBreak
+    */
     Lich.DOM.LineBreak = function()
     {                
         
@@ -992,16 +1516,19 @@ this.Lich = this.Lich || {};
                 
         this._node = "br";
         this._element = Lich.Document.createElement(this._node);
-        
                         
     }
     
     Lich.DOM.LineBreak.extends(Lich.DOM.Utils.Text);
         
-    /*=====================================================*/
-    /*==================  PREFORMATED TEXT  ===============*/
-    /*=====================================================*/
+    //=====================================================//
+    //==================  PREFORMATED TEXT  ===============//
+    //=====================================================//
     
+    /**
+     * @description Create a PreformatedText element.
+     * @class Lich.DOM.PreformatedText
+    */
     Lich.DOM.PreformatedText = function()
     {                
         
@@ -1010,15 +1537,18 @@ this.Lich = this.Lich || {};
         this._node = "pre";
         this._element = Lich.Document.createElement(this._node);
         
-                        
     }
     
     Lich.DOM.PreformatedText.extends(Lich.DOM.Utils.Text);
         
-    /*=====================================================*/
-    /*========================  BOLD  =====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //========================  BOLD  =====================//
+    //=====================================================//
     
+    /**
+     * @description Create a Bold element.
+     * @class Lich.DOM.Bold
+    */
     Lich.DOM.Bold = function()
     {                
         
@@ -1026,16 +1556,19 @@ this.Lich = this.Lich || {};
                 
         this._node = "b";
         this._element = Lich.Document.createElement(this._node);
-        
                         
     }
     
     Lich.DOM.Bold.extends(Lich.DOM.Utils.Text);
         
-    /*=====================================================*/
-    /*=======================  STRONG  ====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=======================  STRONG  ====================//
+    //=====================================================//
     
+    /**
+     * @description Create a Strong element.
+     * @class Lich.DOM.Strong
+    */
     Lich.DOM.Strong = function()
     {                
         
@@ -1044,15 +1577,18 @@ this.Lich = this.Lich || {};
         this._node = "strong";
         this._element = Lich.Document.createElement(this._node);
         
-                        
     }
     
     Lich.DOM.Strong.extends(Lich.DOM.Utils.Text);
         
-    /*=====================================================*/
-    /*=======================  ITALIC  ====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=======================  ITALIC  ====================//
+    //=====================================================//
     
+    /**
+     * @description Create a Italic element.
+     * @class Lich.DOM.Italic
+    */
     Lich.DOM.Italic = function()
     {                
         
@@ -1061,15 +1597,18 @@ this.Lich = this.Lich || {};
         this._node = "i";
         this._element = Lich.Document.createElement(this._node);
         
-                        
     }
     
     Lich.DOM.Italic.extends(Lich.DOM.Utils.Text);
         
-    /*=====================================================*/
-    /*=====================  EMPLATIZED  ==================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=====================  EMPLATIZED  ==================//
+    //=====================================================//
     
+    /**
+     * @description Create a Emphatized element.
+     * @class Lich.DOM.Emphatized
+    */
     Lich.DOM.Emphatized = function()
     {                
         
@@ -1078,15 +1617,18 @@ this.Lich = this.Lich || {};
         this._node = "em";
         this._element = Lich.Document.createElement(this._node);
         
-                        
     }
     
     Lich.DOM.Emphatized.extends(Lich.DOM.Utils.Text);
         
-    /*=====================================================*/
-    /*=======================  SMALL  =====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=======================  SMALL  =====================//
+    //=====================================================//
     
+    /**
+     * @description Create a Small element.
+     * @class Lich.DOM.Small
+    */
     Lich.DOM.Small = function()
     {                
         
@@ -1095,15 +1637,18 @@ this.Lich = this.Lich || {};
         this._node = "small";
         this._element = Lich.Document.createElement(this._node);
         
-                        
     }
     
     Lich.DOM.Small.extends(Lich.DOM.Utils.Text);
         
-    /*=====================================================*/
-    /*=======================  MARK  ======================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=======================  MARK  ======================//
+    //=====================================================//
     
+    /**
+     * @description Create a Mark element.
+     * @class Lich.DOM.Mark
+    */
     Lich.DOM.Mark = function()
     {                
         
@@ -1112,15 +1657,18 @@ this.Lich = this.Lich || {};
         this._node = "mark";
         this._element = Lich.Document.createElement(this._node);
         
-                        
     }
     
     Lich.DOM.Mark.extends(Lich.DOM.Utils.Text);
      
-    /*=====================================================*/
-    /*=====================  DELETED  =====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=====================  DELETED  =====================//
+    //=====================================================//
     
+    /**
+     * @description Create a Deleted element.
+     * @class Lich.DOM.Deleted
+    */
     Lich.DOM.Deleted = function()
     {                
         
@@ -1128,16 +1676,19 @@ this.Lich = this.Lich || {};
                 
         this._node = "del";
         this._element = Lich.Document.createElement(this._node);
-        
                         
     }
     
     Lich.DOM.Deleted.extends(Lich.DOM.Utils.Text);
         
-    /*=====================================================*/
-    /*====================  INSERTED  =====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //====================  INSERTED  =====================//
+    //=====================================================//
     
+    /**
+     * @description Create a Inserted element.
+     * @class Lich.DOM.Inserted
+    */
     Lich.DOM.Inserted = function()
     {                
         
@@ -1145,16 +1696,19 @@ this.Lich = this.Lich || {};
                 
         this._node = "ins";
         this._element = Lich.Document.createElement(this._node);
-        
                         
     }
     
     Lich.DOM.Inserted.extends(Lich.DOM.Utils.Text);
         
-    /*=====================================================*/
-    /*===================  SUBSCRIPTED  ===================*/
-    /*=====================================================*/
+    //=====================================================//
+    //===================  SUBSCRIPTED  ===================//
+    //=====================================================//
     
+    /**
+     * @description Create a Subscripted element.
+     * @class Lich.DOM.Subscripted
+    */
     Lich.DOM.Subscripted = function()
     {                
         
@@ -1163,15 +1717,18 @@ this.Lich = this.Lich || {};
         this._node = "sub";
         this._element = Lich.Document.createElement(this._node);
         
-                        
     }
     
     Lich.DOM.Subscripted.extends(Lich.DOM.Utils.Text);
         
-    /*=====================================================*/
-    /*==================  SUPERSCRIPTED  ==================*/
-    /*=====================================================*/
+    //=====================================================//
+    //==================  SUPERSCRIPTED  ==================//
+    //=====================================================//
     
+    /**
+     * @description Create a Superscripted element.
+     * @class Lich.DOM.Superscripted
+    */
     Lich.DOM.Superscripted = function()
     {                
         
@@ -1179,16 +1736,19 @@ this.Lich = this.Lich || {};
                 
         this._node = "sup";
         this._element = Lich.Document.createElement(this._node);
-        
                         
     }
     
     Lich.DOM.Superscripted.extends(Lich.DOM.Utils.Text);
         
-    /*=====================================================*/
-    /*=======================  QUOTE  =====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=======================  QUOTE  =====================//
+    //=====================================================//
     
+    /**
+     * @description Create a Quote element.
+     * @class Lich.DOM.Quote
+    */
     Lich.DOM.Quote = function()
     {                
         
@@ -1196,16 +1756,19 @@ this.Lich = this.Lich || {};
                 
         this._node = "quote";
         this._element = Lich.Document.createElement(this._node);
-        
                         
     }
     
     Lich.DOM.Quote.extends(Lich.DOM.Utils.Text);
         
-    /*=====================================================*/
-    /*====================  BLOCKQUOTE  ===================*/
-    /*=====================================================*/
+    //=====================================================//
+    //====================  BLOCKQUOTE  ===================//
+    //=====================================================//
     
+    /**
+     * @description Create a Blockquote element.
+     * @class Lich.DOM.Blockquote
+    */
     Lich.DOM.Blockquote = function()
     {                
         
@@ -1213,16 +1776,19 @@ this.Lich = this.Lich || {};
                 
         this._node = "blockquote";
         this._element = Lich.Document.createElement(this._node);
-        
                         
     }
     
     Lich.DOM.Blockquote.extends(Lich.DOM.Utils.Text);
         
-    /*=====================================================*/
-    /*======================  ADDRESS  ====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //======================  ADDRESS  ====================//
+    //=====================================================//
     
+    /**
+     * @description Create a Address element.
+     * @class Lich.DOM.Address
+    */
     Lich.DOM.Address = function()
     {                
         
@@ -1231,15 +1797,18 @@ this.Lich = this.Lich || {};
         this._node = "address";
         this._element = Lich.Document.createElement(this._node);
         
-                        
     }
     
     Lich.DOM.Address.extends(Lich.DOM.Utils.Text);
         
-    /*=====================================================*/
-    /*========================  CITE  =====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //========================  CITE  =====================//
+    //=====================================================//
     
+    /**
+     * @description Create a Cite element.
+     * @class Lich.DOM.Cite
+    */
     Lich.DOM.Cite = function()
     {                
         
@@ -1248,15 +1817,18 @@ this.Lich = this.Lich || {};
         this._node = "cite";
         this._element = Lich.Document.createElement(this._node);
         
-                        
     }
     
     Lich.DOM.Cite.extends(Lich.DOM.Utils.Text);
         
-    /*=====================================================*/
-    /*====================  BiDirectional  ================*/
-    /*=====================================================*/
+    //=====================================================//
+    //====================  BiDirectional  ================//
+    //=====================================================//
     
+    /**
+     * @description Create a BiDirectional element.
+     * @class Lich.DOM.BiDirectional
+    */
     Lich.DOM.BiDirectional = function()
     {                
         
@@ -1267,11 +1839,15 @@ this.Lich = this.Lich || {};
         this._element = Lich.Document.createElement(this._node);
         this.inverted(this._inverted);
         
-                        
     }
     
     Lich.DOM.BiDirectional.extends(Lich.DOM.Utils.Text);
     
+    /**
+     * @description Set the BiDirectional inversion state.
+     * @param {boolean} boolean - The boolean value.
+     * @method
+    */
     Lich.DOM.BiDirectional.prototype.inverted = function(boolean)
     {
     
@@ -1292,10 +1868,14 @@ this.Lich = this.Lich || {};
             
     };
     
-    /*=====================================================*/
-    /*========================  LINK  =====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //========================  LINK  =====================//
+    //=====================================================//
     
+    /**
+     * @description Create a Link element.
+     * @class Lich.DOM.Link
+    */
     Lich.DOM.Link = function()
     {                
         
@@ -1310,6 +1890,11 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.Link.extends(Lich.DOM.Utils.Container);
     
+    /**
+     * @description Set the Link hypertext reference.
+     * @param {string} hypertextReference - The hypertext reference value.
+     * @method
+    */
     Lich.DOM.Link.prototype.setHypertextReference = function(hypertextReference)
     {
     
@@ -1318,6 +1903,11 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Set the Link target.
+     * @param {string} target - The target value.
+     * @method
+    */
     Lich.DOM.Link.prototype.setTarget = function(target)
     {
     
@@ -1326,10 +1916,14 @@ this.Lich = this.Lich || {};
     
     };
     
-    /*=====================================================*/
-    /*====================   DIVISION   ===================*/
-    /*=====================================================*/
+    //=====================================================//
+    //====================   DIVISION   ===================//
+    //=====================================================//
     
+    /**
+     * @description Create a Division element.
+     * @class Lich.DOM.Division
+    */
     Lich.DOM.Division = function()
     {
         
@@ -1342,10 +1936,14 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.Division.extends(Lich.DOM.Utils.Container);
     
-    /*=====================================================*/
-    /*=====================   HEADER   ====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=====================   HEADER   ====================//
+    //=====================================================//
     
+    /**
+     * @description Create a Header element.
+     * @class Lich.DOM.Header
+    */
     Lich.DOM.Header = function()
     {
         
@@ -1358,11 +1956,15 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.Header.extends(Lich.DOM.Utils.Container);
     
-    /*=====================================================*/
-    /*===================   NAVIGATION   ==================*/
-    /*=====================================================*/
+    //=====================================================//
+    //===================   NAVIGATION   ==================//
+    //=====================================================//
     
-    Lich.DOM.Navigation  = function()
+    /**
+     * @description Create a Navigation element.
+     * @class Lich.DOM.Navigation
+    */
+    Lich.DOM.Navigation = function()
     {
         
         Lich.DOM.Utils.Container.call(this);
@@ -1374,11 +1976,15 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.Navigation.extends(Lich.DOM.Utils.Container);
     
-    /*=====================================================*/
-    /*=====================   SECTION   ===================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=====================   SECTION   ===================//
+    //=====================================================//
     
-    Lich.DOM.Section  = function()
+    /**
+     * @description Create a Section element.
+     * @class Lich.DOM.Section
+    */
+    Lich.DOM.Section = function()
     {
         
         Lich.DOM.Utils.Container.call(this);
@@ -1390,11 +1996,15 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.Section.extends(Lich.DOM.Utils.Container);
     
-    /*=====================================================*/
-    /*=====================   ARTICLE   ===================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=====================   ARTICLE   ===================//
+    //=====================================================//
     
-    Lich.DOM.Article  = function()
+    /**
+     * @description Create a Article element.
+     * @class Lich.DOM.Article
+    */
+    Lich.DOM.Article = function()
     {
         
         Lich.DOM.Utils.Container.call(this);
@@ -1406,11 +2016,15 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.Article.extends(Lich.DOM.Utils.Container);
     
-    /*=====================================================*/
-    /*=====================   FOOTER   ====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=====================   FOOTER   ====================//
+    //=====================================================//
     
-    Lich.DOM.Footer  = function()
+    /**
+     * @description Create a Footer element.
+     * @class Lich.DOM.Footer
+    */
+    Lich.DOM.Footer = function()
     {
         
         Lich.DOM.Utils.Container.call(this);
@@ -1422,10 +2036,14 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.Footer.extends(Lich.DOM.Utils.Container);
     
-    /*=====================================================*/
-    /*=====================   CANVAS   ====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=====================   CANVAS   ====================//
+    //=====================================================//
     
+    /**
+     * @description Create a Canvas element.
+     * @class Lich.DOM.Canvas
+    */
     Lich.DOM.Canvas  = function()
     {
         
@@ -1440,6 +2058,11 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.Canvas.extends(Lich.DOM.Utils.Element);
     
+    /**
+     * @description Set the Canvas width.
+     * @param {string} width - The width value.
+     * @method
+    */
     Lich.DOM.Canvas.prototype.setWidth = function(width)
     {
         
@@ -1448,6 +2071,11 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Set the Canvas height.
+     * @param {string} height - The height value.
+     * @method
+    */
     Lich.DOM.Canvas.prototype.setHeight = function(height)
     {
         
@@ -1456,6 +2084,12 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Set the Canvas width and height.
+     * @param {string} width - The width value.
+     * @param {string} height - The height value.
+     * @method
+    */
     Lich.DOM.Canvas.prototype.setSize = function(width,height)
     {
         
@@ -1464,13 +2098,21 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Get the Canvas context.
+     * @method
+    */
     Lich.DOM.Canvas.prototype.getContext = function()
     {
     
         return this._context;
     
     };
-        
+    
+    /**
+     * @description Get the Canvas context.
+     * @method
+    */
     Lich.DOM.Canvas.prototype.moveTo = function(x,y)
     {
         
@@ -1478,6 +2120,12 @@ this.Lich = this.Lich || {};
         
     }
     
+    /**
+     * @description Create a Canvas line.
+     * @param {string} x - The x value.
+     * @param {string} y - The y value.
+     * @method
+    */
     Lich.DOM.Canvas.prototype.lineTo = function(x,y)
     {
         
@@ -1485,6 +2133,10 @@ this.Lich = this.Lich || {};
         
     }
     
+    /**
+     * @description Apply a stroke to a Canvas line.
+     * @method
+    */
     Lich.DOM.Canvas.prototype.stroke = function()
     {
         
@@ -1492,6 +2144,10 @@ this.Lich = this.Lich || {};
         
     }
     
+    /**
+     * @description Begin a draw path in a Canvas.
+     * @method
+    */
     Lich.DOM.Canvas.prototype.beginPath = function()
     {
         
@@ -1499,6 +2155,16 @@ this.Lich = this.Lich || {};
         
     }
     
+    /**
+     * @description Create a Canvas arc.
+     * @param {string} x - The x value.
+     * @param {string} y - The y value.
+     * @param {string} r - The r value.
+     * @param {string} startingAngle - The starting angle value.
+     * @param {string} endingAngle - The ending angle value.
+     * @param {string} counterClockwise - The counter clockwise value.
+     * @method
+    */
     Lich.DOM.Canvas.prototype.arc = function(x,y,r,startingAngle,endingAngle,counterClockwise)
     {
         
@@ -1506,6 +2172,11 @@ this.Lich = this.Lich || {};
         
     }
     
+    /**
+     * @description Set the font to a Canvas text.
+     * @param {string} font - The font value.
+     * @method
+    */
     Lich.DOM.Canvas.prototype.font = function(font)
     {
         
@@ -1513,6 +2184,13 @@ this.Lich = this.Lich || {};
         
     }
     
+    /**
+     * @description Create a Canvas text and set its x and y position.
+     * @param {string} x - The x value.
+     * @param {string} y - The y value.
+     * @param {string} text - The text value.
+     * @method
+    */
     Lich.DOM.Canvas.prototype.fillText = function(x,y,text)
     {
         
@@ -1520,6 +2198,13 @@ this.Lich = this.Lich || {};
         
     }
     
+    /**
+     * @description Create a Canvas stroke text and set its x and y position.
+     * @param {string} x - The x value.
+     * @param {string} y - The y value.
+     * @param {string} text - The text value.
+     * @method
+    */
     Lich.DOM.Canvas.prototype.strokeText = function(x,y,text)
     {
         
@@ -1527,6 +2212,14 @@ this.Lich = this.Lich || {};
         
     }
     
+    /**
+     * @description Create a Canvas liner gradient.
+     * @param {string} x0 - The x0 value.
+     * @param {string} y0 - The y0 value.
+     * @param {string} x1 - The x1 value.
+     * @param {string} y1 - The y1 value.
+     * @method
+    */
     Lich.DOM.Canvas.prototype.createLinearGradient = function(x0,y0,x1,y1)
     {
     
@@ -1534,6 +2227,16 @@ this.Lich = this.Lich || {};
     
     }
     
+    /**
+     * @description Create a Canvas radial gradient.
+     * @param {string} x0 - The x0 value.
+     * @param {string} y0 - The y0 value.
+     * @param {string} r0 - The r0 value.
+     * @param {string} x1 - The x1 value.
+     * @param {string} y1 - The y1 value.
+     * @param {string} r1 - The r1 value.
+     * @method
+    */
     Lich.DOM.Canvas.prototype.createRadialGradient = function(x0,y0,r0,x1,y1,r1)
     {
         
@@ -1541,6 +2244,12 @@ this.Lich = this.Lich || {};
     
     }
     
+    /**
+     * @description Create a Canvas gradient color stop.
+     * @param {string} stop - The stop value.
+     * @param {string} color - The color value.
+     * @method
+    */
     Lich.DOM.Canvas.prototype.addColorStop = function(stop,color)
     {
     
@@ -1548,6 +2257,11 @@ this.Lich = this.Lich || {};
     
     }
     
+    /**
+     * @description Set a Canvas fill style.
+     * @param {string} style - The style value.
+     * @method
+    */
     Lich.DOM.Canvas.prototype.fillStyle = function(style)
     {
     
@@ -1555,6 +2269,14 @@ this.Lich = this.Lich || {};
     
     }
     
+    /**
+     * @description Set a Canvas fill rect.
+     * @param {string} x - The x value.
+     * @param {string} y - The y value.
+     * @param {string} width - The width value.
+     * @param {string} height - The height value.
+     * @method
+    */
     Lich.DOM.Canvas.prototype.fillRect = function(x,y,width,height)
     {
         
@@ -1562,6 +2284,13 @@ this.Lich = this.Lich || {};
         
     }
     
+    /**
+     * @description Create a Canvas image.
+     * @param {string} x - The x value.
+     * @param {string} y - The y value.
+     * @param {string} url - The url value.
+     * @method
+    */
     Lich.DOM.Canvas.prototype.drawImage = function(x,y,url)
     {
         
@@ -1569,10 +2298,14 @@ this.Lich = this.Lich || {};
         
     }
     
-    /*=====================================================*/
-    /*======================   SPAN   =====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //======================   SPAN   =====================//
+    //=====================================================//
     
+    /**
+     * @description Create a Span element.
+     * @class Lich.DOM.Span
+    */
     Lich.DOM.Span = function()
     {
         
@@ -1585,10 +2318,14 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.Span.extends(Lich.DOM.Utils.Container);
        
-    /*=====================================================*/
-    /*=======================   CODE   ====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=======================   CODE   ====================//
+    //=====================================================//
     
+    /**
+     * @description Create a Code element.
+     * @class Lich.DOM.Code
+    */
     Lich.DOM.Code = function()
     {
         
@@ -1601,10 +2338,14 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.Code.extends(Lich.DOM.Utils.Container);
     
-    /*=====================================================*/
-    /*==================   KEYBOARD INPUT   ===============*/
-    /*=====================================================*/
+    //=====================================================//
+    //==================   KEYBOARD INPUT   ===============//
+    //=====================================================//
     
+    /**
+     * @description Create a KeyboardInput element.
+     * @class Lich.DOM.Code
+    */
     Lich.DOM.KeyboardInput = function()
     {
         
@@ -1617,10 +2358,14 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.KeyboardInput.extends(Lich.DOM.Utils.Text);
     
-    /*=====================================================*/
-    /*==================   SAMPLE OUTPUT   ================*/
-    /*=====================================================*/
+    //=====================================================//
+    //==================   SAMPLE OUTPUT   ================//
+    //=====================================================//
     
+    /**
+     * @description Create a SampleOutput element.
+     * @class Lich.DOM.Code
+    */
     Lich.DOM.SampleOutput = function()
     {
         
@@ -1633,10 +2378,14 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.SampleOutput.extends(Lich.DOM.Utils.Text);
     
-    /*=====================================================*/
-    /*=====================   VARIABLE   ==================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=====================   VARIABLE   ==================//
+    //=====================================================//
     
+    /**
+     * @description Create a Variable element.
+     * @class Lich.DOM.Code
+    */
     Lich.DOM.Variable = function()
     {
         
@@ -1649,10 +2398,14 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.Variable.extends(Lich.DOM.Utils.Text);
 
-    /*=====================================================*/
-    /*========================  MAP  ======================*/
-    /*=====================================================*/
+    //=====================================================//
+    //========================  MAP  ======================//
+    //=====================================================//
     
+    /**
+     * @description Create a Map element.
+     * @class Lich.DOM.Map
+    */
     Lich.DOM.Map = function()
     {
         
@@ -1666,6 +2419,11 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.Map.extends(Lich.DOM.Utils.Container);
     
+    /**
+     * @description Set a Map name.
+     * @param {string} name - The name value.
+     * @method
+    */
     Lich.DOM.Map.prototype.setName = function(name)
     {
     
@@ -1674,10 +2432,14 @@ this.Lich = this.Lich || {};
     
     };
     
-    /*=====================================================*/
-    /*======================  PICTURE  ====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //======================  PICTURE  ====================//
+    //=====================================================//
     
+    /**
+     * @description Create a Picture element.
+     * @class Lich.DOM.Picture
+    */
     Lich.DOM.Picture = function()
     {
         
@@ -1690,10 +2452,14 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.Picture.extends(Lich.DOM.Utils.Container);
     
-    /*=====================================================*/
-    /*=======================  TABLE  =====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=======================  TABLE  =====================//
+    //=====================================================//
     
+    /**
+     * @description Create a Table element.
+     * @class Lich.DOM.Table
+    */
     Lich.DOM.Table = function()
     {
         
@@ -1706,10 +2472,14 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.Table.extends(Lich.DOM.Utils.Container);
     
-    /*=====================================================*/
-    /*=======================  CAPTION  ===================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=======================  CAPTION  ===================//
+    //=====================================================//
     
+    /**
+     * @description Create a Caption element.
+     * @class Lich.DOM.Caption
+    */
     Lich.DOM.Caption = function()
     {
         
@@ -1722,11 +2492,14 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.Caption.extends(Lich.DOM.Utils.Text);
     
+    //=====================================================//
+    //=====================  TABLE HEAD  ==================//
+    //=====================================================//
     
-    /*=====================================================*/
-    /*=====================  TABLE HEAD  ==================*/
-    /*=====================================================*/
-    
+    /**
+     * @description Create a TableHead element.
+     * @class Lich.DOM.TableHead
+    */
     Lich.DOM.TableHead = function()
     {
         
@@ -1739,11 +2512,14 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.TableHead.extends(Lich.DOM.Utils.Text);
     
+    //=====================================================//
+    //=====================  TABLE ROW  ===================//
+    //=====================================================//
     
-    /*=====================================================*/
-    /*=====================  TABLE ROW  ===================*/
-    /*=====================================================*/
-    
+    /**
+     * @description Create a TableRow element.
+     * @class Lich.DOM.TableRow
+    */
     Lich.DOM.TableRow = function()
     {
         
@@ -1756,10 +2532,14 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.TableRow.extends(Lich.DOM.Utils.Container);
     
-    /*=====================================================*/
-    /*=====================  TABLE CELL  ==================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=====================  TABLE CELL  ==================//
+    //=====================================================//
     
+    /**
+     * @description Create a TableCell element.
+     * @class Lich.DOM.TableCell
+    */
     Lich.DOM.TableCell = function()
     {
         
@@ -1772,10 +2552,14 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.TableCell.extends(Lich.DOM.Utils.Text);
     
-    /*=====================================================*/
-    /*===================  UNORDERED LIST  ================*/
-    /*=====================================================*/
+    //=====================================================//
+    //===================  UNORDERED LIST  ================//
+    //=====================================================//
     
+    /**
+     * @description Create a UnorderedList element.
+     * @class Lich.DOM.UnorderedList
+    */
     Lich.DOM.UnorderedList = function()
     {
         
@@ -1788,10 +2572,14 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.UnorderedList.extends(Lich.DOM.Utils.Container);
     
-    /*=====================================================*/
-    /*====================  ORDERED LIST  =================*/
-    /*=====================================================*/
+    //=====================================================//
+    //====================  ORDERED LIST  =================//
+    //=====================================================//
 
+    /**
+     * @description Create a OrderedList element.
+     * @class Lich.DOM.OrderedList
+    */
     Lich.DOM.OrderedList = function()
     {
         
@@ -1805,6 +2593,11 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.OrderedList.extends(Lich.DOM.Utils.Container);
     
+    /**
+     * @description Set a OrderedList type.
+     * @param {string} type - The type value.
+     * @method
+    */
     Lich.DOM.OrderedList.prototype.setType = function(type)
     {
     
@@ -1813,10 +2606,14 @@ this.Lich = this.Lich || {};
     
     };
     
-    /*=====================================================*/
-    /*=====================  LIST ITEM  ===================*/
-    /*=====================================================*/
-
+    //=====================================================//
+    //=====================  LIST ITEM  ===================//
+    //=====================================================//
+    
+    /**
+     * @description Create a OrderedList element.
+     * @class Lich.DOM.OrderedList
+    */
     Lich.DOM.ListItem = function()
     {
         
@@ -1829,10 +2626,14 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.ListItem.extends(Lich.DOM.Utils.Text);
     
-    /*=====================================================*/
-    /*==================  DEFINITION LIST  ================*/
-    /*=====================================================*/
+    //=====================================================//
+    //==================  DEFINITION LIST  ================//
+    //=====================================================//
     
+    /**
+     * @description Create a DefinitionList element.
+     * @class Lich.DOM.DefinitionList
+    */
     Lich.DOM.DefinitionList = function()
     {
         
@@ -1845,10 +2646,14 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.DefinitionList.extends(Lich.DOM.Utils.Container);
     
-    /*=====================================================*/
-    /*==================  DEFINITION TERM  ================*/
-    /*=====================================================*/
+    //=====================================================//
+    //==================  DEFINITION TERM  ================//
+    //=====================================================//
 
+    /**
+     * @description Create a DefinitionTerm element.
+     * @class Lich.DOM.DefinitionTerm
+    */
     Lich.DOM.DefinitionTerm = function()
     {
         
@@ -1861,10 +2666,14 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.DefinitionTerm.extends(Lich.DOM.Utils.Text);
     
-    /*=====================================================*/
-    /*==============  DEFINITION DESCRIPTION  =============*/
-    /*=====================================================*/
+    //=====================================================//
+    //==============  DEFINITION DESCRIPTION  =============//
+    //=====================================================//
 
+    /**
+     * @description Create a DefinitionDescription element.
+     * @class Lich.DOM.DefinitionDescription
+    */
     Lich.DOM.DefinitionDescription = function()
     {
         
@@ -1877,10 +2686,14 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.DefinitionDescription.extends(Lich.DOM.Utils.Text);
 
-    /*=====================================================*/
-    /*=======================  IMAGE  =====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=======================  IMAGE  =====================//
+    //=====================================================//
     
+    /**
+     * @description Create a Image element.
+     * @class Lich.DOM.Image
+    */
     Lich.DOM.Image = function()
     {
         
@@ -1898,6 +2711,11 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.Image.extends(Lich.DOM.Utils.Element);
         
+    /**
+     * @description Set a Image souce.
+     * @param {string} source - The source value.
+     * @method
+    */
     Lich.DOM.Image.prototype.setSource = function(source)
     {
         
@@ -1906,6 +2724,11 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Set a Image alternate Text.
+     * @param {string} alternateText - The alternate text value.
+     * @method
+    */
     Lich.DOM.Image.prototype.setAlternateText = function(alternateText)
     {
         
@@ -1914,6 +2737,11 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Set a Image width.
+     * @param {string} width - The width value.
+     * @method
+    */
     Lich.DOM.Image.prototype.setWidth = function(width)
     {
         
@@ -1922,6 +2750,11 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Set a Image height.
+     * @param {string} height - The height value.
+     * @method
+    */
     Lich.DOM.Image.prototype.setHeight = function(height)
     {
         
@@ -1930,6 +2763,12 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Set a Image width and height.
+     * @param {string} width - The width value.
+     * @param {string} height - The height value.
+     * @method
+    */
     Lich.DOM.Image.prototype.setSize = function(width,height)
     {
         
@@ -1938,6 +2777,11 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Set a Image map.
+     * @param {string} map - The map value.
+     * @method
+    */
     Lich.DOM.Image.prototype.setMap = function(map)
     {
         
@@ -1946,10 +2790,14 @@ this.Lich = this.Lich || {};
     
     };
 
-    /*=====================================================*/
-    /*========================  AREA  =====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //========================  AREA  =====================//
+    //=====================================================//
     
+    /**
+     * @description Create a Area element.
+     * @class Lich.DOM.Area
+    */
     Lich.DOM.Area = function()
     {
         
@@ -1966,6 +2814,11 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.Area.extends(Lich.DOM.Utils.Element);
     
+    /**
+     * @description Set a Area shape.
+     * @param {string} shape - The shape value.
+     * @method
+    */
     Lich.DOM.Area.prototype.setShape = function(shape)
     {
     
@@ -1974,6 +2827,11 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Set a Area coordinates.
+     * @param {string} coordinates - The coordinates value.
+     * @method
+    */
     Lich.DOM.Area.prototype.setCoordinates = function(coordinates)
     {
     
@@ -1982,6 +2840,11 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Set a Area hypertext reference.
+     * @param {string} hypertextReference - The hypertext reference value.
+     * @method
+    */
     Lich.DOM.Area.prototype.setHypertextReference = function(hypertextReference)
     {
         
@@ -1990,6 +2853,11 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Set a Area alternate text.
+     * @param {string} alternateText - The alternate text value.
+     * @method
+    */
     Lich.DOM.Area.prototype.setAlternateText = function(alternateText)
     {
         
@@ -1998,10 +2866,14 @@ this.Lich = this.Lich || {};
         
     };
     
-    /*=====================================================*/
-    /*=======================  SOURCE  ====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=======================  SOURCE  ====================//
+    //=====================================================//
     
+    /**
+     * @description Create a Source element.
+     * @class Lich.DOM.Source
+    */
     Lich.DOM.Source = function()
     {
         
@@ -2015,7 +2887,12 @@ this.Lich = this.Lich || {};
     }
     
     Lich.DOM.Source.extends(Lich.DOM.Utils.Element);
-        
+    
+    /**
+     * @description Set a Source media.
+     * @param {string} media - The media value.
+     * @method
+    */
     Lich.DOM.Source.prototype.setMedia = function(media)
     {
         
@@ -2024,6 +2901,11 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Set a Source source set.
+     * @param {string} sourceSet - The source set value.
+     * @method
+    */
     Lich.DOM.Source.prototype.setSourceSet = function(sourceSet)
     {
     
@@ -2032,10 +2914,14 @@ this.Lich = this.Lich || {};
     
     };
     
-    /*=====================================================*/
-    /*=======================  BUTTON  ====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=======================  BUTTON  ====================//
+    //=====================================================//
     
+    /**
+     * @description Create a Button element.
+     * @class Lich.DOM.Button
+    */
     Lich.DOM.Button = function()
     {
         
@@ -2043,16 +2929,19 @@ this.Lich = this.Lich || {};
         
         this._node = "button";
         this._type = "button";
-        this._value = "button";
         this._element = Lich.Document.createElement(this.getNode());
         
         this.setType(this._type);
-        this.setValue(this._value);
                 
     }
     
     Lich.DOM.Button.extends(Lich.DOM.Utils.Element);
-        
+    
+    /**
+     * @description Set a Button type.
+     * @param {string} type - The type value.
+     * @method
+    */
     Lich.DOM.Button.prototype.setType = function(type)
     {
         
@@ -2061,6 +2950,11 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Set a Button value.
+     * @param {string} value - The value value.
+     * @method
+    */
     Lich.DOM.Button.prototype.setValue = function(value)
     {
         
@@ -2069,10 +2963,14 @@ this.Lich = this.Lich || {};
         
     };
     
-    /*=====================================================*/
-    /*===================   INLINE FRAME   ================*/
-    /*=====================================================*/
+    //=====================================================//
+    //===================   INLINE FRAME   ================//
+    //=====================================================//
     
+    /**
+     * @description Create a InlineFrame element.
+     * @class Lich.DOM.InlineFrame
+    */
     Lich.DOM.InlineFrame = function()
     {
         
@@ -2089,6 +2987,11 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.InlineFrame.extends(Lich.DOM.Utils.Element);
     
+    /**
+     * @description Set a Button width.
+     * @param {string} width - The width value.
+     * @method
+    */
     Lich.DOM.InlineFrame.prototype.setWidth = function(width)
     {
         
@@ -2097,6 +3000,11 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Set a Button height.
+     * @param {string} height - The height value.
+     * @method
+    */
     Lich.DOM.InlineFrame.prototype.setHeight = function(height)
     {
         
@@ -2105,6 +3013,12 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Set a Button width and height.
+     * @param {string} width - The width value.
+     * @param {string} height - The height value.
+     * @method
+    */
     Lich.DOM.InlineFrame.prototype.setSize = function(width,height)
     {
         
@@ -2113,6 +3027,11 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Set a Button source.
+     * @param {string} source - The source value.
+     * @method
+    */
     Lich.DOM.InlineFrame.prototype.setSource = function(source)
     {
         
@@ -2122,6 +3041,11 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Set a Button name.
+     * @param {string} name - The name value.
+     * @method
+    */
     Lich.DOM.InlineFrame.prototype.setName = function(name)
     {
     
@@ -2130,10 +3054,14 @@ this.Lich = this.Lich || {};
     
     };
     
-    /*=====================================================*/
-    /*=======================   FORM   ====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=======================   FORM   ====================//
+    //=====================================================//
     
+    /**
+     * @description Create a Form element.
+     * @class Lich.DOM.Form
+    */
     Lich.DOM.Form = function()
     {
         
@@ -2142,6 +3070,7 @@ this.Lich = this.Lich || {};
         this._node = "form";
         this._action = null;
         this._method = null;
+        this._type = null;
         this._autocomplete = null;
         this._novalidate = null;
         this._element = Lich.Document.createElement(this.getNode());
@@ -2150,22 +3079,50 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.Form.extends(Lich.DOM.Utils.Container);
     
+    /**
+     * @description Set a Form type.
+     * @param {string} type - The type value.
+     * @method
+    */
+    Lich.DOM.Form.prototype.setType = function(type)
+    {
+    
+        this._type = type;
+        this.setAttribute("type",this._type);
+    
+    };
+    
+    /**
+     * @description Set a Form type.
+     * @param {string} action - The action value.
+     * @method
+    */
     Lich.DOM.Form.prototype.setAction = function(action)
     {
     
         this._action = action;
-        this.setAttribute("type",this._action);
+        this.setAttribute("action",this._action);
     
     };
     
+    /**
+     * @description Set a Form type.
+     * @param {string} method - The method value.
+     * @method
+    */
     Lich.DOM.Form.prototype.setMethod = function(method)
     {
     
         this._method = method;
-        this.setAttribute("type",this.method);
+        this.setAttribute("method",this._method);
     
     };
     
+    /**
+     * @description Set a Form auto complete boolean state.
+     * @param {boolean} boolean - The boolean value.
+     * @method
+    */
     Lich.DOM.Form.prototype.autoComplete = function(boolean)
     {
     
@@ -2174,6 +3131,11 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Set a Form no validate boolean state.
+     * @param {boolean} boolean - The boolean value.
+     * @method
+    */
     Lich.DOM.Form.prototype.noValidate = function(boolean)
     {
     
@@ -2182,10 +3144,14 @@ this.Lich = this.Lich || {};
     
     };
         
-    /*=====================================================*/
-    /*======================   INPUT   ====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //======================   INPUT   ====================//
+    //=====================================================//
     
+    /**
+     * @description Create a Input element.
+     * @class Lich.DOM.Input
+    */
     Lich.DOM.Input = function()
     {
         
@@ -2217,13 +3183,17 @@ this.Lich = this.Lich || {};
         this._noValidate = null;
         this._multiple = null;
         
-        
         this._element = Lich.Document.createElement(this.getNode());
                 
     }
     
     Lich.DOM.Input.extends(Lich.DOM.Utils.Element);
     
+    /**
+     * @description Set a Input type.
+     * @param {string} type - The type value.
+     * @method
+    */
     Lich.DOM.Input.prototype.setType = function(type)
     {
     
@@ -2232,6 +3202,11 @@ this.Lich = this.Lich || {};
     
     }
     
+    /**
+     * @description Set a Input name.
+     * @param {string} name - The name value.
+     * @method
+    */
     Lich.DOM.Input.prototype.setName = function(name)
     {
     
@@ -2240,6 +3215,11 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Set a Input value.
+     * @param {string} value - The value value.
+     * @method
+    */
     Lich.DOM.Input.prototype.setValue = function(value)
     {
         
@@ -2248,6 +3228,11 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Set a Input list.
+     * @param {string} list - The list value.
+     * @method
+    */
     Lich.DOM.Input.prototype.setList = function(list)
     {
         
@@ -2256,6 +3241,11 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Set a Input minimum.
+     * @param {string} minimum - The minimum value.
+     * @method
+    */
     Lich.DOM.Input.prototype.setMinimun = function(minimum)
     {
     
@@ -2264,6 +3254,11 @@ this.Lich = this.Lich || {};
     
     }
     
+    /**
+     * @description Set a Input maximum.
+     * @param {string} maximum - The maximum value.
+     * @method
+    */
     Lich.DOM.Input.prototype.setMaximum = function(maximum)
     {
     
@@ -2272,6 +3267,11 @@ this.Lich = this.Lich || {};
     
     }
     
+    /**
+     * @description Set a Input form.
+     * @param {string} form - The form value.
+     * @method
+    */
     Lich.DOM.Input.prototype.setForm = function(form)
     {
     
@@ -2280,6 +3280,11 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Set a Input form action.
+     * @param {string} formAction - The form action value.
+     * @method
+    */
     Lich.DOM.Input.prototype.setFormAction = function(formAction)
     {
     
@@ -2288,6 +3293,11 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Set a Input form encode type.
+     * @param {string} formEncodeType - The form encode type value.
+     * @method
+    */
     Lich.DOM.Input.prototype.setFormEncodeType = function(formEncodeType)
     {
     
@@ -2296,6 +3306,11 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Set a Input form method.
+     * @param {string} formMethod - The form method value.
+     * @method
+    */
     Lich.DOM.Input.prototype.setFormMethod = function(formMethod)
     {
     
@@ -2303,7 +3318,12 @@ this.Lich = this.Lich || {};
         this.setAttribute("formaction",this._formMethod);
     
     };
-        
+    
+    /**
+     * @description Set a Input form target.
+     * @param {string} formTarget - The form target value.
+     * @method
+    */
     Lich.DOM.Input.prototype.setFormTarget = function(formTarget)
     {
         
@@ -2312,6 +3332,11 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Set a Input width.
+     * @param {string} width - The width value.
+     * @method
+    */
     Lich.DOM.Input.prototype.setWidth = function(width)
     {
         
@@ -2320,6 +3345,11 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Set a Input height.
+     * @param {string} height - The height value.
+     * @method
+    */
     Lich.DOM.Input.prototype.setHeight = function(height)
     {
         
@@ -2328,6 +3358,12 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Set a Input width and height.
+     * @param {string} width - The width value.
+     * @param {string} height - The height value.
+     * @method
+    */
     Lich.DOM.Input.prototype.setSize = function(width,height)
     {
         
@@ -2336,6 +3372,11 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Set a Input step.
+     * @param {string} step - The step value.
+     * @method
+    */
     Lich.DOM.Input.prototype.setStep = function(step)
     {
     
@@ -2344,6 +3385,11 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Set a Input max length.
+     * @param {string} maxLength - The max length value.
+     * @method
+    */
     Lich.DOM.Input.prototype.setMaxLength = function(maxLength)
     {
     
@@ -2352,7 +3398,11 @@ this.Lich = this.Lich || {};
     
     };
     
-    
+    /**
+     * @description Set a Input pattern.
+     * @param {string} pattern - The pattern value.
+     * @method
+    */
     Lich.DOM.Input.prototype.setPattern = function(pattern)
     {
         
@@ -2361,6 +3411,11 @@ this.Lich = this.Lich || {};
         
     };    
     
+    /**
+     * @description Set a Input title.
+     * @param {string} title - The title value.
+     * @method
+    */
     Lich.DOM.Input.prototype.setTitle = function(title)
     {
         
@@ -2369,6 +3424,11 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Set a Input placeholder.
+     * @param {string} placeholder - The placeholder value.
+     * @method
+    */
     Lich.DOM.Input.prototype.setPlaceholder = function(placeholder)
     {
         
@@ -2377,6 +3437,10 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Set a Input checked boolean state true.
+     * @method
+    */
     Lich.DOM.Input.prototype.checked = function()
     {
         
@@ -2384,6 +3448,11 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Set a Input required boolean state.
+     * @param {boolean} boolean - The boolean value.
+     * @method
+    */
     Lich.DOM.Input.prototype.required = function(boolean)
     {
     
@@ -2392,6 +3461,11 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Set a Input readonly boolean state.
+     * @param {boolean} boolean - The boolean value.
+     * @method
+    */
     Lich.DOM.Input.prototype.readonly = function(boolean)
     {
     
@@ -2400,6 +3474,11 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Set a Input disabled boolean state.
+     * @param {boolean} boolean - The boolean value.
+     * @method
+    */
     Lich.DOM.Input.prototype.disabled = function(boolean)
     {
     
@@ -2408,14 +3487,24 @@ this.Lich = this.Lich || {};
     
     };
     
-    Lich.DOM.Input.prototype.autofocus = function(autofocus)
+    /**
+     * @description Set a Input autofocus boolean state.
+     * @param {boolean} boolean - The boolean value.
+     * @method
+    */
+    Lich.DOM.Input.prototype.autofocus = function(boolean)
     {
     
-        this._autofocus = autofocus;
+        this._autofocus = boolean;
         this.setAttribute("disabled",this._autofocus);
     
     };
     
+    /**
+     * @description Set a Input noValidate boolean state.
+     * @param {boolean} boolean - The boolean value.
+     * @method
+    */
     Lich.DOM.Input.prototype.noValidate = function(boolean)
     {
     
@@ -2424,6 +3513,11 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Set a Input multiple boolean state.
+     * @param {boolean} boolean - The boolean value.
+     * @method
+    */
     Lich.DOM.Input.prototype.multiple = function(boolean)
     {
     
@@ -2432,10 +3526,14 @@ this.Lich = this.Lich || {};
     
     };
     
-    /*=====================================================*/
-    /*====================   FIELDSET   ===================*/
-    /*=====================================================*/
+    //=====================================================//
+    //====================   FIELDSET   ===================//
+    //=====================================================//
     
+    /**
+     * @description Create a Fieldset element.
+     * @class Lich.DOM.Fieldset
+    */
     Lich.DOM.Fieldset = function()
     {
         
@@ -2448,10 +3546,14 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.Fieldset.extends(Lich.DOM.Utils.Container);
     
-    /*=====================================================*/
-    /*=====================   LEGEND   ====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=====================   LEGEND   ====================//
+    //=====================================================//
     
+    /**
+     * @description Create a Legend element.
+     * @class Lich.DOM.Legend
+    */
     Lich.DOM.Legend = function()
     {
         
@@ -2464,10 +3566,14 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.Legend.extends(Lich.DOM.Utils.Text);
     
-    /*=====================================================*/
-    /*=====================   SELECT   ====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=====================   SELECT   ====================//
+    //=====================================================//
     
+    /**
+     * @description Create a Select element.
+     * @class Lich.DOM.Select
+    */
     Lich.DOM.Select = function()
     {
         
@@ -2481,6 +3587,11 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.Select.extends(Lich.DOM.Utils.Container);
     
+    /**
+     * @description Set a Select name.
+     * @param {string} name - The name value.
+     * @method
+    */
     Lich.DOM.Select.prototype.setName = function(name)
     {
     
@@ -2489,10 +3600,14 @@ this.Lich = this.Lich || {};
     
     };
     
-    /*=====================================================*/
-    /*=====================   OPTION   ====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=====================   OPTION   ====================//
+    //=====================================================//
     
+    /**
+     * @description Create a Option element.
+     * @class Lich.DOM.Option
+    */
     Lich.DOM.Option = function()
     {
         
@@ -2506,6 +3621,11 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.Option.extends(Lich.DOM.Utils.Text);
     
+    /**
+     * @description Set a Option value.
+     * @param {string} value - The value value.
+     * @method
+    */
     Lich.DOM.Option.prototype.setValue = function(value)
     {
         
@@ -2514,6 +3634,10 @@ this.Lich = this.Lich || {};
         
     };
     
+    /**
+     * @description Set a Option selected boolean state true.
+     * @method
+    */
     Lich.DOM.Option.prototype.selected = function()
     {
         
@@ -2521,10 +3645,14 @@ this.Lich = this.Lich || {};
         
     };
     
-    /*=====================================================*/
-    /*====================   TEXT AREA   ==================*/
-    /*=====================================================*/
+    //=====================================================//
+    //====================   TEXT AREA   ==================//
+    //=====================================================//
     
+    /**
+     * @description Create a TextArea element.
+     * @class Lich.DOM.TextArea
+    */
     Lich.DOM.TextArea = function()
     {
         
@@ -2540,6 +3668,11 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.TextArea.extends(Lich.DOM.Utils.Text);
     
+    /**
+     * @description Set a TextArea value.
+     * @param {string} name - The name value.
+     * @method
+    */
     Lich.DOM.TextArea.prototype.setName = function(name)
     {
     
@@ -2548,6 +3681,11 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Set a TextArea rows.
+     * @param {string} rows - The rows value.
+     * @method
+    */
     Lich.DOM.TextArea.prototype.setRows = function(rows)
     {
     
@@ -2556,6 +3694,11 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Set a TextArea columns.
+     * @param {string} columns - The columns value.
+     * @method
+    */
     Lich.DOM.TextArea.prototype.setColumns = function(columns)
     {
     
@@ -2564,10 +3707,14 @@ this.Lich = this.Lich || {};
     
     };
     
-    /*=====================================================*/
-    /*=====================   DATALIST   ==================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=====================   DATALIST   ==================//
+    //=====================================================//
     
+    /**
+     * @description Create a Datalist element.
+     * @class Lich.DOM.Datalist
+    */
     Lich.DOM.Datalist = function()
     {
         
@@ -2580,10 +3727,14 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.Datalist.extends(Lich.DOM.Utils.Container);
     
-    /*=====================================================*/
-    /*=====================   KEYGEN   ====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=====================   KEYGEN   ====================//
+    //=====================================================//
     
+    /**
+     * @description Create a Keygen element.
+     * @class Lich.DOM.Keygen
+    */
     Lich.DOM.Keygen = function()
     {
         
@@ -2597,6 +3748,11 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.Keygen.extends(Lich.DOM.Utils.Element);
     
+    /**
+     * @description Set a Keygen name.
+     * @param {string} name - The name value.
+     * @method
+    */
     Lich.DOM.Keygen.prototype.setName = function(name)
     {
     
@@ -2605,10 +3761,14 @@ this.Lich = this.Lich || {};
     
     };
     
-    /*=====================================================*/
-    /*=====================   OUTPUT   ====================*/
-    /*=====================================================*/
+    //=====================================================//
+    //=====================   OUTPUT   ====================//
+    //=====================================================//
     
+    /**
+     * @description Create a Output element.
+     * @class Lich.DOM.Output
+    */
     Lich.DOM.Output = function()
     {
         
@@ -2623,6 +3783,11 @@ this.Lich = this.Lich || {};
     
     Lich.DOM.Output.extends(Lich.DOM.Utils.Element);
     
+    /**
+     * @description Set a Output name.
+     * @param {string} name - The name value.
+     * @method
+    */
     Lich.DOM.Output.prototype.setName = function(name)
     {
     
@@ -2631,6 +3796,11 @@ this.Lich = this.Lich || {};
     
     };
     
+    /**
+     * @description Set a Output For.
+     * @param {string} For - The For value.
+     * @method
+    */
     Lich.DOM.Output.prototype.setFor = function(For)
     {
     
@@ -2638,39 +3808,5 @@ this.Lich = this.Lich || {};
         this.setAttribute("for",this._for);
     
     };
-    
-    /*=====================================================*/
-    /*===============   CANVAS OBJECT MODEL   =============*/
-    /*=====================================================*/
-    /*
-    Lich.COM = {};
-    Lich.COM.Utils = {};
-    */
-    /*=====================================================*/
-    /*====================   GRAPHICS   ===================*/
-    /*=====================================================*/
-    /*
-    Lich.COM.Utils.Graphics = function()
-    {
-        
-        Lich.DOM.Utils.Graphics.abstract(this);
-        this._type = null;
-        
-    };
-    */      
-    /*=====================================================*/
-    /*======================   LINE   =====================*/
-    /*=====================================================*/
-    /*
-    Lich.COM.Line = function()
-    {
-        
-        Lich.COM.Utils.Graphics.call(this);
-        this._type = "line";
-    
-    }
-    
-    Lich.COM.Line.extends(Lich.COM.Utils.Graphics);
-    */
     
 }());
