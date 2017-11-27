@@ -1,2 +1,2 @@
 # Lich
-Library for creating web pages with only javascript.
+Library for creating web pages with javascript and css.
