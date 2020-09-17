@@ -1,4 +1,5 @@
-# **DEPRECATED** - no longer actively maintained
+# :x: **DEPRECATED** - no longer actively maintained
+This is no longer supported as this is not a viable way to develop html and css code for a website.
 
 ---
 
