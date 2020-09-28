@@ -3,7 +3,7 @@ This is no longer supported as this is not a viable way to develop html and css 
 
 ---
 
-# Lich
+# Lich-Library
  Library for creating web pages with javascript and css.
 
 ## Developed 
