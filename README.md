@@ -4,7 +4,7 @@ This is no longer supported as this is not a viable way to develop html and css 
 ---
 
 # Lich-Library
- Library for creating web pages with javascript and css.
+ Library for creating web pages with javascript.
 
 ## Developed 
  * Written by Joseph Oliveira Corrêa, <joseph.oliveira.correa@gmail.com>, September 2017
